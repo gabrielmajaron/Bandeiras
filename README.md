@@ -1,4 +1,4 @@
-#Bandeiras
+# Bandeiras
 
 Ferramenta de estudo para aprender bandeiras de países e ilhas.
 
