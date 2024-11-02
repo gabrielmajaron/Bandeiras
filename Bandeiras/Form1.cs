@@ -1,5 +1,6 @@
 using Bandeiras.Handlers;
 using Bandeiras.Models;
+using System.Diagnostics;
 
 namespace Bandeiras
 {
@@ -7,6 +8,8 @@ namespace Bandeiras
     {
         List<CountryResponse> allCountries;
         List<CountryResponse> filteredCountries;
+        List<CountryResponse> wrongAnsweredCountries;
+
         CountryDetailsForm? countryDetailsForm = null;
 
         int pointer = 0;
@@ -15,6 +18,7 @@ namespace Bandeiras
         {
             InitializeComponent();
             this.picBoxFlag.SizeMode = PictureBoxSizeMode.StretchImage;
+            wrongAnsweredCountries = new List<CountryResponse>();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -29,7 +33,7 @@ namespace Bandeiras
             if (ckbRandom.Checked)
                 pointer = new Random().Next(0, filteredCountries.Count);
             else
-                pointer = pointer+1 >= filteredCountries.Count ? 0 : pointer+1;
+                pointer = pointer + 1 >= filteredCountries.Count ? 0 : pointer + 1;
 
             picBoxFlag.Image = ByteToImage(filteredCountries.ElementAt(pointer).Flags.PngBytes);
             lblNomeBandeira.Text = filteredCountries.ElementAt(pointer).Name.TranslatedName;
@@ -62,11 +66,11 @@ namespace Bandeiras
             if (ckbRandom.Checked)
                 pointer = new Random().Next(0, filteredCountries.Count);
             else
-                pointer = pointer - 1 <= -1 ? filteredCountries.Count-1 : pointer - 1;
+                pointer = pointer - 1 <= -1 ? filteredCountries.Count - 1 : pointer - 1;
 
 
             picBoxFlag.Image = ByteToImage(filteredCountries.ElementAt(pointer).Flags.PngBytes);
-            
+
             lblNomeBandeira.Text = filteredCountries.ElementAt(pointer).Name.TranslatedName;
         }
 
@@ -77,7 +81,7 @@ namespace Bandeiras
 
             try
             {
-                SetLoadingState();                
+                SetLoadingState();
 
                 allCountries = f.LoadCountries();
 
@@ -106,7 +110,7 @@ namespace Bandeiras
         {
             List<CountryResponse> clone = new List<CountryResponse>();
 
-            foreach(var country in countries)
+            foreach (var country in countries)
                 clone.Add((CountryResponse)country.Clone());
 
             return clone;
@@ -117,7 +121,7 @@ namespace Bandeiras
             var continentGroup = countries.GroupBy(c => c.Continents);
 
             List<string> items = new List<string> { "All" };
-            foreach(var continent in continentGroup)
+            foreach (var continent in continentGroup)
             {
                 var continentNames = continent.Key;
                 items.AddRange(continentNames);
@@ -167,6 +171,7 @@ namespace Bandeiras
             lblNomeBandeira.Text = filteredCountries.First().Name.TranslatedName;
             lblCountriesRemaining.Text = filteredCountries.Count.ToString();
             cbbAnswer.Text = "";
+            wrongAnsweredCountries = new List<CountryResponse>();
         }
 
         private void cbbAnswer_KeyDown(object sender, KeyEventArgs e)
@@ -176,9 +181,9 @@ namespace Bandeiras
                 checkBox1.Checked = !checkBox1.Checked;
                 return;
             }
-            if (e.KeyCode == Keys.Enter)            
+            if (e.KeyCode == Keys.Enter)
             {
-                if(cbbAnswer.Text == "")
+                if (cbbAnswer.Text == "")
                 {
                     btnNext_Click(null, null);
                     return;
@@ -187,18 +192,23 @@ namespace Bandeiras
                 if (filteredCountries.Count == 0)
                     return;
 
-                var questionCountry = filteredCountries.ElementAt(pointer);                
+                var questionCountry = filteredCountries.ElementAt(pointer);
 
                 if (cbbAnswer.Text == questionCountry.Name.TranslatedName)
                 {
                     lblCountriesRemaining.Text = (Convert.ToInt32(lblCountriesRemaining.Text) - 1).ToString();
                     filteredCountries.Remove(questionCountry);
                     pointer--;
-                    btnNext_Click(null,null);
+                    btnNext_Click(null, null);
+                }
+                else
+                {
+                    if (!wrongAnsweredCountries.Contains(questionCountry))
+                        wrongAnsweredCountries.Add(questionCountry);
                 }
             }
         }
-        
+
         private void cbbContinents_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbbContinents.SelectedIndex == 0)
@@ -211,7 +221,7 @@ namespace Bandeiras
 
             var continent = cbbContinents.SelectedItem.ToString();
 
-            if(continent == null)
+            if (continent == null)
             {
                 MessageBox.Show("Erro ao tentar obter continente para o filtro");
                 return;
@@ -266,6 +276,12 @@ namespace Bandeiras
                 return true;
 
             return false;
+        }
+
+        private void picBoxBook_Click(object sender, EventArgs e)
+        {
+            WrongAnswereds form = new WrongAnswereds(wrongAnsweredCountries);
+            form.ShowDialog();
         }
     }
 }

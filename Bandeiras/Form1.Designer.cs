@@ -30,145 +30,158 @@ namespace Bandeiras
         /// </summary>
         private void InitializeComponent()
         {
-            this.picBoxFlag = new System.Windows.Forms.PictureBox();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrev = new System.Windows.Forms.Button();
-            this.cbbAnswer = new System.Windows.Forms.ComboBox();
-            this.lblNomeBandeira = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.lblLoading = new System.Windows.Forms.Label();
-            this.cbbContinents = new System.Windows.Forms.ComboBox();
-            this.lblCountriesRemaining = new System.Windows.Forms.Label();
-            this.ckbRandom = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxFlag)).BeginInit();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            picBoxFlag = new PictureBox();
+            btnNext = new Button();
+            btnPrev = new Button();
+            cbbAnswer = new ComboBox();
+            lblNomeBandeira = new Label();
+            checkBox1 = new CheckBox();
+            lblLoading = new Label();
+            cbbContinents = new ComboBox();
+            lblCountriesRemaining = new Label();
+            ckbRandom = new CheckBox();
+            picBoxBook = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)picBoxFlag).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxBook).BeginInit();
+            SuspendLayout();
             // 
             // picBoxFlag
             // 
-            this.picBoxFlag.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picBoxFlag.Location = new System.Drawing.Point(52, 93);
-            this.picBoxFlag.Name = "picBoxFlag";
-            this.picBoxFlag.Size = new System.Drawing.Size(323, 182);
-            this.picBoxFlag.TabIndex = 0;
-            this.picBoxFlag.TabStop = false;
+            picBoxFlag.BackgroundImageLayout = ImageLayout.Stretch;
+            picBoxFlag.Location = new Point(52, 111);
+            picBoxFlag.Name = "picBoxFlag";
+            picBoxFlag.Size = new Size(323, 182);
+            picBoxFlag.TabIndex = 0;
+            picBoxFlag.TabStop = false;
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(310, 309);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 1;
-            this.btnNext.Text = "Próximo";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            btnNext.Location = new Point(310, 329);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(75, 38);
+            btnNext.TabIndex = 1;
+            btnNext.Text = "Próximo";
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
             // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(229, 309);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(75, 23);
-            this.btnPrev.TabIndex = 2;
-            this.btnPrev.Text = "Anterior";
-            this.btnPrev.UseVisualStyleBackColor = true;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            btnPrev.Location = new Point(229, 329);
+            btnPrev.Name = "btnPrev";
+            btnPrev.Size = new Size(75, 38);
+            btnPrev.TabIndex = 2;
+            btnPrev.Text = "Anterior";
+            btnPrev.UseVisualStyleBackColor = true;
+            btnPrev.Click += btnPrev_Click;
             // 
             // cbbAnswer
             // 
-            this.cbbAnswer.FormattingEnabled = true;
-            this.cbbAnswer.Location = new System.Drawing.Point(52, 64);
-            this.cbbAnswer.Name = "cbbAnswer";
-            this.cbbAnswer.Size = new System.Drawing.Size(194, 23);
-            this.cbbAnswer.TabIndex = 3;
-            this.cbbAnswer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbbAnswer_KeyDown);
+            cbbAnswer.FormattingEnabled = true;
+            cbbAnswer.Location = new Point(52, 64);
+            cbbAnswer.Name = "cbbAnswer";
+            cbbAnswer.Size = new Size(194, 23);
+            cbbAnswer.TabIndex = 3;
+            cbbAnswer.KeyDown += cbbAnswer_KeyDown;
             // 
             // lblNomeBandeira
             // 
-            this.lblNomeBandeira.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNomeBandeira.Location = new System.Drawing.Point(121, 346);
-            this.lblNomeBandeira.Name = "lblNomeBandeira";
-            this.lblNomeBandeira.Size = new System.Drawing.Size(300, 15);
-            this.lblNomeBandeira.TabIndex = 4;
-            this.lblNomeBandeira.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblNomeBandeira.Click += new System.EventHandler(this.lblNomeBandeira_Click);
+            lblNomeBandeira.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblNomeBandeira.Location = new Point(121, 391);
+            lblNomeBandeira.Name = "lblNomeBandeira";
+            lblNomeBandeira.Size = new Size(300, 15);
+            lblNomeBandeira.TabIndex = 4;
+            lblNomeBandeira.TextAlign = ContentAlignment.MiddleRight;
+            lblNomeBandeira.Click += lblNomeBandeira_Click;
             // 
             // checkBox1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(252, 68);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(121, 19);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Esconder resposta";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(252, 68);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(121, 19);
+            checkBox1.TabIndex = 5;
+            checkBox1.Text = "Esconder resposta";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // lblLoading
             // 
-            this.lblLoading.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblLoading.Location = new System.Drawing.Point(52, 172);
-            this.lblLoading.Name = "lblLoading";
-            this.lblLoading.Size = new System.Drawing.Size(323, 20);
-            this.lblLoading.TabIndex = 6;
-            this.lblLoading.Text = "Carregando... Aguarde";
-            this.lblLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblLoading.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblLoading.Location = new Point(52, 172);
+            lblLoading.Name = "lblLoading";
+            lblLoading.Size = new Size(323, 65);
+            lblLoading.TabIndex = 6;
+            lblLoading.Text = "Carregando... Aguarde";
+            lblLoading.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // cbbContinents
             // 
-            this.cbbContinents.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbContinents.FormattingEnabled = true;
-            this.cbbContinents.Location = new System.Drawing.Point(52, 35);
-            this.cbbContinents.Name = "cbbContinents";
-            this.cbbContinents.Size = new System.Drawing.Size(194, 23);
-            this.cbbContinents.TabIndex = 7;
-            this.cbbContinents.SelectedIndexChanged += new System.EventHandler(this.cbbContinents_SelectedIndexChanged);
+            cbbContinents.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbContinents.FormattingEnabled = true;
+            cbbContinents.Location = new Point(52, 35);
+            cbbContinents.Name = "cbbContinents";
+            cbbContinents.Size = new Size(194, 23);
+            cbbContinents.TabIndex = 7;
+            cbbContinents.SelectedIndexChanged += cbbContinents_SelectedIndexChanged;
             // 
             // lblCountriesRemaining
             // 
-            this.lblCountriesRemaining.AutoSize = true;
-            this.lblCountriesRemaining.Location = new System.Drawing.Point(52, 278);
-            this.lblCountriesRemaining.Name = "lblCountriesRemaining";
-            this.lblCountriesRemaining.Size = new System.Drawing.Size(13, 15);
-            this.lblCountriesRemaining.TabIndex = 8;
-            this.lblCountriesRemaining.Text = "0";
+            lblCountriesRemaining.AutoSize = true;
+            lblCountriesRemaining.Location = new Point(52, 296);
+            lblCountriesRemaining.Name = "lblCountriesRemaining";
+            lblCountriesRemaining.Size = new Size(13, 15);
+            lblCountriesRemaining.TabIndex = 8;
+            lblCountriesRemaining.Text = "0";
             // 
             // ckbRandom
             // 
-            this.ckbRandom.AutoSize = true;
-            this.ckbRandom.Checked = true;
-            this.ckbRandom.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbRandom.Location = new System.Drawing.Point(252, 39);
-            this.ckbRandom.Name = "ckbRandom";
-            this.ckbRandom.Size = new System.Drawing.Size(63, 19);
-            this.ckbRandom.TabIndex = 9;
-            this.ckbRandom.Text = "Sortear";
-            this.ckbRandom.UseVisualStyleBackColor = true;
+            ckbRandom.AutoSize = true;
+            ckbRandom.Checked = true;
+            ckbRandom.CheckState = CheckState.Checked;
+            ckbRandom.Location = new Point(252, 39);
+            ckbRandom.Name = "ckbRandom";
+            ckbRandom.Size = new Size(63, 19);
+            ckbRandom.TabIndex = 9;
+            ckbRandom.Text = "Sortear";
+            ckbRandom.UseVisualStyleBackColor = true;
+            // 
+            // picBoxBook
+            // 
+            picBoxBook.BackgroundImage = (Image)resources.GetObject("picBoxBook.BackgroundImage");
+            picBoxBook.BackgroundImageLayout = ImageLayout.Center;
+            picBoxBook.Location = new Point(52, 329);
+            picBoxBook.Name = "picBoxBook";
+            picBoxBook.Size = new Size(46, 38);
+            picBoxBook.TabIndex = 11;
+            picBoxBook.TabStop = false;
+            picBoxBook.Click += picBoxBook_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 370);
-            this.Controls.Add(this.ckbRandom);
-            this.Controls.Add(this.lblCountriesRemaining);
-            this.Controls.Add(this.cbbContinents);
-            this.Controls.Add(this.lblLoading);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.lblNomeBandeira);
-            this.Controls.Add(this.cbbAnswer);
-            this.Controls.Add(this.btnPrev);
-            this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.picBoxFlag);
-            this.MaximizeBox = false;
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bandeiras";
-            this.Load += new System.EventHandler(this.Form1_Load_1);
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxFlag)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(433, 415);
+            Controls.Add(picBoxBook);
+            Controls.Add(ckbRandom);
+            Controls.Add(lblCountriesRemaining);
+            Controls.Add(cbbContinents);
+            Controls.Add(lblLoading);
+            Controls.Add(checkBox1);
+            Controls.Add(lblNomeBandeira);
+            Controls.Add(cbbAnswer);
+            Controls.Add(btnPrev);
+            Controls.Add(btnNext);
+            Controls.Add(picBoxFlag);
+            MaximizeBox = false;
+            Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Bandeiras";
+            Load += Form1_Load_1;
+            ((System.ComponentModel.ISupportInitialize)picBoxFlag).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxBook).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -183,5 +196,6 @@ namespace Bandeiras
         private ComboBox cbbContinents;
         private Label lblCountriesRemaining;
         private CheckBox ckbRandom;
+        private PictureBox picBoxBook;
     }
 }
