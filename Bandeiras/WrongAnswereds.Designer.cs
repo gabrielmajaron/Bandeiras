@@ -132,6 +132,7 @@
             Controls.Add(btnPrev);
             Controls.Add(btnNext);
             Controls.Add(picBoxFlag);
+            MaximizeBox = false;
             Name = "WrongAnswereds";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Bandeiras não decoradas";
