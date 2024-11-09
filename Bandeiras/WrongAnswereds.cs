@@ -1,4 +1,5 @@
-﻿using Bandeiras.Models;
+﻿using Bandeiras.Common;
+using Bandeiras.Models;
 
 namespace Bandeiras
 {
@@ -6,7 +7,6 @@ namespace Bandeiras
     {
         int pointer;
         List<CountryResponse> wrongAnswereds;
-        string imgRelativePath = @"./Images/flags.png";
 
         public WrongAnswereds(List<CountryResponse> wrongAnswereds)
         {
@@ -27,7 +27,7 @@ namespace Bandeiras
                 try
                 {
                     picBoxFlag.SizeMode = PictureBoxSizeMode.Zoom;
-                    picBoxFlag.Image = Image.FromFile(imgRelativePath);
+                    picBoxFlag.Image = Image.FromFile(Constants.flagsImgRelativePath);
                 }
                 catch { }
 

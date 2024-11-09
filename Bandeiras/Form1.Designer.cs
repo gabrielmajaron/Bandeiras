@@ -42,8 +42,10 @@ namespace Bandeiras
             lblCountriesRemaining = new Label();
             ckbRandom = new CheckBox();
             picBoxBook = new PictureBox();
+            picBoxRefresh = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picBoxFlag).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBoxBook).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxRefresh).BeginInit();
             SuspendLayout();
             // 
             // picBoxFlag
@@ -57,7 +59,7 @@ namespace Bandeiras
             // 
             // btnNext
             // 
-            btnNext.Location = new Point(310, 329);
+            btnNext.Location = new Point(300, 329);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(75, 38);
             btnNext.TabIndex = 1;
@@ -67,7 +69,7 @@ namespace Bandeiras
             // 
             // btnPrev
             // 
-            btnPrev.Location = new Point(229, 329);
+            btnPrev.Location = new Point(219, 329);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Size(75, 38);
             btnPrev.TabIndex = 2;
@@ -152,16 +154,29 @@ namespace Bandeiras
             picBoxBook.BackgroundImageLayout = ImageLayout.Center;
             picBoxBook.Location = new Point(52, 329);
             picBoxBook.Name = "picBoxBook";
-            picBoxBook.Size = new Size(46, 38);
+            picBoxBook.Size = new Size(45, 40);
             picBoxBook.TabIndex = 11;
             picBoxBook.TabStop = false;
             picBoxBook.Click += picBoxBook_Click;
+            // 
+            // picBoxRefresh
+            // 
+            picBoxRefresh.BackgroundImage = (Image)resources.GetObject("picBoxRefresh.BackgroundImage");
+            picBoxRefresh.BackgroundImageLayout = ImageLayout.Zoom;
+            picBoxRefresh.Location = new Point(330, 325);
+            picBoxRefresh.Name = "picBoxRefresh";
+            picBoxRefresh.Size = new Size(45, 45);
+            picBoxRefresh.TabIndex = 13;
+            picBoxRefresh.TabStop = false;
+            picBoxRefresh.Visible = false;
+            picBoxRefresh.Click += picBoxRefresh_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(433, 415);
+            Controls.Add(picBoxRefresh);
             Controls.Add(picBoxBook);
             Controls.Add(ckbRandom);
             Controls.Add(lblCountriesRemaining);
@@ -180,6 +195,7 @@ namespace Bandeiras
             Load += Form1_Load_1;
             ((System.ComponentModel.ISupportInitialize)picBoxFlag).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBoxBook).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picBoxRefresh).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -197,5 +213,6 @@ namespace Bandeiras
         private Label lblCountriesRemaining;
         private CheckBox ckbRandom;
         private PictureBox picBoxBook;
+        private PictureBox picBoxRefresh;
     }
 }

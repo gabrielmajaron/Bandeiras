@@ -1,6 +1,6 @@
+using Bandeiras.Common;
 using Bandeiras.Handlers;
 using Bandeiras.Models;
-using System.Diagnostics;
 
 namespace Bandeiras
 {
@@ -27,6 +27,21 @@ namespace Bandeiras
             {
                 picBoxFlag.Image = null;
                 lblNomeBandeira.Text = "";
+
+                try
+                {
+                    picBoxFlag.SizeMode = PictureBoxSizeMode.Zoom;
+                    picBoxFlag.Image = Image.FromFile(Constants.flagsImgRelativePath);
+                }
+                catch { }
+
+                if (allCountries.Count == 0)
+                    return;
+
+                picBoxRefresh.Visible = true;
+                btnNext.Visible = false;
+                btnPrev.Visible = false;
+
                 return;
             }
 
@@ -96,6 +111,7 @@ namespace Bandeiras
 
                 SetCbbCountriesNames(allCountries);
                 SetCbbContinentsNames(allCountries);
+
                 SetReadyState();
             }
             catch (Exception ex)
@@ -161,10 +177,15 @@ namespace Bandeiras
 
         private void SetReadyState()
         {
+            picBoxFlag.SizeMode = PictureBoxSizeMode.StretchImage;
+
             cbbAnswer.Enabled = true;
             lblLoading.Visible = false;
             btnNext.Enabled = true;
             btnPrev.Enabled = true;
+            picBoxRefresh.Visible = false;
+            btnNext.Visible = true;
+            btnPrev.Visible = true;
 
             pointer = 0;
             picBoxFlag.Image = ByteToImage(filteredCountries.First().Flags.PngBytes);
@@ -211,6 +232,11 @@ namespace Bandeiras
 
         private void cbbContinents_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Reset();
+        }
+
+        private void Reset()
+        {
             if (cbbContinents.SelectedIndex == 0)
             {
                 filteredCountries = CloneCountries(allCountries);
@@ -232,7 +258,6 @@ namespace Bandeiras
             SetCbbCountriesNames(filteredCountries);
             SetReadyState();
         }
-
 
         private delegate void CallbackUpdateTxtProgress(string text);
 
@@ -280,8 +305,13 @@ namespace Bandeiras
 
         private void picBoxBook_Click(object sender, EventArgs e)
         {
-            WrongAnswereds form = new WrongAnswereds(wrongAnsweredCountries);
+            var form = new WrongAnswereds(wrongAnsweredCountries);
             form.ShowDialog();
+        }
+
+        private void picBoxRefresh_Click(object sender, EventArgs e)
+        {
+            Reset();
         }
     }
 }
